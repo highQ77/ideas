@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>William77's Creative Ideas</title>
+    <script src="./browser@4"></script>
+</head>
+
+<body class="m-0 bg-gray-900 text-white text-[14px]">
+    <div class="m-5">
+        <div class="text-[26px] text-gray-300">William77's Creative Ideas</div>
+        <div class="text-gray-500">這是威廉七七的創意點子集合</div>
+    </div>
+    <div id="ideas" class="m-5 grid grid-cols-2 gap-3"></div>
+    <script type="module">
+        import { ideas } from './ideas.js'
+        let ideasH5 = document.getElementById('ideas')
+        ideas.reverse()
+        ideas.forEach((idea, idx) => {
+            let ideaContainer = document.createElement('div')
+            ideaContainer.className = 'relative border p-3'
+
+            let ideaIndex = document.createElement('div')
+            ideaIndex.className = 'absolute right-3 text-[40px] text-gray-500'
+            ideaIndex.innerHTML = idx + 1
+            ideaContainer.appendChild(ideaIndex)
+
+            let ideaTitle = document.createElement('div')
+            ideaTitle.className = 'text-[18px]'
+            ideaTitle.innerHTML = idea.title
+            ideaContainer.appendChild(ideaTitle)
+
+            let ideaDate = document.createElement('div')
+            ideaDate.className = 'text-[12px] text-blue-300'
+            ideaDate.innerHTML = idea.date
+            ideaDate.style.fontFamily = 'Arial'
+            ideaContainer.appendChild(ideaDate)
+
+            let ideaTags = document.createElement('div')
+            ideaTags.className = 'text-gray-500'
+            ideaTags.innerHTML = idea.tags.join(', ')
+            ideaContainer.appendChild(ideaTags)
+
+            let ideaBody = document.createElement('div')
+            ideaBody.className = ''
+            ideaBody.innerHTML = idea.content
+            ideaContainer.appendChild(ideaBody)
+
+            ideasH5.appendChild(ideaContainer)
+        })
+    </script>
+</body>
+
+</html>
